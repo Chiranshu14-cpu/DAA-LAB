@@ -1,45 +1,45 @@
 #include <stdio.h>
-
 int main() {
-	int m, n, p, q;
-	int i, j, k;
-
-	if (scanf("%d %d", &m, &n) != 2) return 0;
-
+	int m, n, r, p;
+	scanf("%d %d", &m, &n);
 	int A[m][n];
-
-	for (i = 0; i < m; i++) {
-		for (j = 0; j < n; j++) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
 			scanf("%d", &A[i][j]);
 		}
 	}
-
-	if (scanf("%d %d", &p, &q) != 2) return 0;
-
-	if (n != p) {
-		printf("Invalid input\n");
-		return 0; 
+	scanf("%d %d", &r, &p);
+	if (n != r) {
+		printf("Invalid input");
+		return 0;
 	}
 
-	int B[p][q];
-	int C[m][q];
+	int B[r][p], C[m][p];
 
-	for (i = 0; i < p; i++) {
-		for (j = 0; j < q; j++) {
+ 
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < p; j++) {
 			scanf("%d", &B[i][j]);
 		}
 	}
 
-	for (i = 0; i < m; i++) {
-		for (j = 0; j < q; j++) {
-			C[i][j] = 0; 
-			for (k = 0; k < n; k++) {
+ 
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < p; j++) {
+			C[i][j] = 0;
+			for (int k = 0; k < n; k++) {
 				C[i][j] += A[i][k] * B[k][j];
 			}
+		}
+	}
 
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < p; j++) {
 			printf("%d ", C[i][j]);
+			if (j != p - 1)
+				printf("");
 		}
 		printf("\n");
 	}
-	return 0;
+
 }
